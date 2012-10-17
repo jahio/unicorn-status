@@ -31,10 +31,13 @@ end
 
 # Poll the given socket every THRESHOLD seconds as specified above.
 puts "Running infinite loop. Use CTRL+C to exit."
+puts "------------------------------------------"
 loop do
   Raindrops::Linux.unix_listener_stats([socket]).each do |addr, stats|
-    puts "#{addr} Active Requests:    #{stats.active}"
-    puts "#{addr} Queued Requests:    #{stats.queued}"
+    puts "Active Requests             Queued Requests"
+    puts "---------------             ---------------"
+    puts "#{stats.active}             #{stats.queued}"
+    puts "" # Break line between polling intervals, makes it easier to read
   end
   sleep threshold
 end
