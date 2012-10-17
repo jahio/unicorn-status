@@ -36,7 +36,7 @@ loop do
   Raindrops::Linux.unix_listener_stats([socket]).each do |addr, stats|
     header = "Active Requests         Queued Requests"
     puts header
-    puts stats.active + stats.queued.rjust(header.length - stats.active.to_s.length)
+    puts stats.active.to_s + stats.queued.to_s.rjust(header.length - stats.active.to_s.length)
     puts "" # Break line between polling intervals, makes it easier to read
   end
   sleep threshold
