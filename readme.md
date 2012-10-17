@@ -6,8 +6,9 @@ Usage:
 
     ruby unicorn_status.rb /path/to/your/unicorn/socket.sock 10
 
-Downloading it on your instance(s):
+Setup:
 
+    gem install unicorn --no-ri --no-rdoc
     curl https://raw.github.com/jaustinhughey/unicorn-status/master/unicorn_status.rb > ~/unicorn_status.rb
 
 Bugs/Contributions:
