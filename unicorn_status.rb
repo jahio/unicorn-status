@@ -34,9 +34,9 @@ puts "Running infinite loop. Use CTRL+C to exit."
 puts "------------------------------------------"
 loop do
   Raindrops::Linux.unix_listener_stats([socket]).each do |addr, stats|
-    puts "Active Requests             Queued Requests"
-    puts "---------------             ---------------"
-    puts "#{stats.active}             #{stats.queued}"
+    header = "Active Requests         Queued Requests"
+    puts header
+    puts stats.active.ljust(header.length) + stats.queued.rjust(header.length)
     puts "" # Break line between polling intervals, makes it easier to read
   end
   sleep threshold
