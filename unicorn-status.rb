@@ -8,7 +8,7 @@ def usage
     ./unicorn_status.rb [SOCKETPATH OR PORTNUM] [INTERVAL]
 
     Polls the given SOCKETPATH or PORTNUM every INTERVAL seconds.
-    Warning: The faster the poll interval, the more profoundly negative performance impact you'll have.
+    Warning: The faster the poll interval, the more profoundly negative performance impact you'll have. 
              BE CAREFUL WHEN DOING THIS IN PRODUCTION.
 
     Arguments:
@@ -24,7 +24,7 @@ def usage
 
       ruby unicorn_status.rb 3001 5
         Polls the queue that the Unicorn worker bound to port 3001 is using every 5 seconds and shows that queue's status
-  
+    
     If the final argument (integer) representing the poll interval is missing or exceeds 10, it'll default to 5 second intervals.
 
   USAGE
@@ -41,7 +41,7 @@ end
 # Look for required args. Throw usage and exit if they don't exist.
 (puts usage && exit 1) if ARGV.count < 1
 
-# Set the threshold based on user values.
+# Set the threshold based on user values. 
 threshold = ((ARGV[1] && (1..10).include?(ARGV[1].to_i) ? ARGV[1].to_i : 5 ))
 
 # Subject must be a valid socket (existing file) or a port that's in use
@@ -80,7 +80,7 @@ subject = get_subject
 puts "Running infinite loop. Use CTRL+C to exit."
 puts "------------------------------------------"
 
-if subject[:socket]
+if subject[:socket]  
   loop do
     request_socket_stats(subject[:socket])
     sleep threshold
